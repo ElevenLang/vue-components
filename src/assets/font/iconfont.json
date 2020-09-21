@@ -1,0 +1,37 @@
+{
+  "id": "2082440",
+  "name": "vue demo",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7041091",
+      "name": "向下箭头",
+      "font_class": "jiantou-up-down-copy",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "17335052",
+      "name": "向下箭头",
+      "font_class": "jiantou-up-down-copy-copy",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "10241121",
+      "name": "确认 对勾 勾号",
+      "font_class": "checkmark",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "1294680",
+      "name": "menu",
+      "font_class": "menu",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    }
+  ]
+}
