@@ -1,9 +1,10 @@
 <template>
-  <a href @mouseleave="hiddenInfo" @mouseenter="showInfo" class="name" v-if="data">
-    {{name}}
-    <transition>
-      <!-- <div class="container" v-show="visible"> -->
-      <div class="container">
+  <div class="name" v-if="data" @mouseleave="hiddenInfo" @mouseenter="showInfo">
+    <!-- 增加vue-router，实现跳转到指定路由功能 -->
+     <!-- todo -->
+    <a href="#">{{name}}</a>
+    <transition name="fade">
+      <div class="container" v-show="visible">
         <div class="title">
           <img :src="data.img" alt />
           <div class="infos">
@@ -36,19 +37,18 @@
         </div>
       </div>
     </transition>
-  </a>
+  </div>
 </template>
 <script>
 import { getUserInfo } from "@/api/mock";
 
 export default {
-  name: 'user',
+  name: "user",
   props: ["name", "uid"],
   data() {
     return {
       data: "",
-      visible: true,
-      duration: 3000,
+      visible: false,
     };
   },
   mounted() {},
@@ -62,9 +62,7 @@ export default {
       console.log(r.data.data, 123);
     },
     showInfo() {
-      setTimeout(() => {
-        this.visible = true;
-      }, 400);
+      this.visible = true;
     },
     hiddenInfo() {
       this.visible = false;
@@ -77,10 +75,13 @@ export default {
 @import "../assets/font/iconfont.css";
 
 .name {
-  color: #333;
-  text-decoration: none;
   position: relative;
   top: 300px;
+  height: 30px;
+}
+.name a {
+  color: #333;
+  text-decoration: none;
 }
 .container {
   position: absolute;
@@ -93,6 +94,7 @@ export default {
   border-radius: 5px;
   box-shadow: 0 0 20px rgba(2, 0, 0, 0.3);
   text-align: center;
+  z-index: 1000;
   /* padding: 10px; */
 }
 .container::before {
@@ -104,7 +106,6 @@ export default {
   border-left: 10px transparent dashed;
   border-bottom: 10px transparent dashed;
   border-right: 10px #fff solid;
-  /* border-right: 10px #0099CC solid; */
 }
 .container .title {
   position: relative;
@@ -131,13 +132,22 @@ export default {
 .info .nums span:nth-child(2) {
   border-right: 1px solid #ccc;
 }
-.contacts{
-display: flex; justify-content: center
+.contacts {
+  display: flex;
+  justify-content: center;
 }
-.contacts>div{
+.contacts > div {
   border: 1px solid #cccccc;
   padding: 10px;
   margin: 10px;
   line-height: 20px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
